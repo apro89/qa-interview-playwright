@@ -1,1 +1,8 @@
-echo "node_modules/" >> .gitignore
+.vscode
+.DS_Store
+node_modules/
+reports
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
