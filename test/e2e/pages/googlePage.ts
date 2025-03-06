@@ -3,13 +3,11 @@ import { Page, Locator, expect } from "@playwright/test";
 export class GooglePage {
   private page: Page;
   private searchInput: Locator;
-  private searchResults: Locator;
   private acceptCookiesButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.searchInput = page.locator('textarea[name="q"]');
-    this.searchResults = page.locator("#search");
     this.acceptCookiesButton = page.getByRole("button", {
       name: /Aceitar tudo/i,
     });
@@ -29,9 +27,9 @@ export class GooglePage {
   }
 
   async clickOnWikipediaLink() {
-    const wikipediaLink = this.searchResults.locator(
-      'a[href*="wikipedia.org"]'
-    );
+    const wikipediaLink = this.page.getByRole("link", {
+      name: "Automation Wikipedia https://",
+    });
     await expect(wikipediaLink).toBeVisible();
     await wikipediaLink.first().click();
   }
