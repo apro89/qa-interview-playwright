@@ -5,7 +5,7 @@ import { formatYear } from "../helpers/utils";
 
 test.use({ storageState: "auth.json" });
 
-test("Search 'automation' on Google, verify Wikipedia article and year", async ({
+test.only("Search 'automation' on Google, verify Wikipedia article and year", async ({
   page,
 }) => {
   const googlePage = new GooglePage(page);
@@ -16,7 +16,7 @@ test("Search 'automation' on Google, verify Wikipedia article and year", async (
 
   await googlePage.clickOnWikipediaLink();
 
-  await wikipediaPage.takeScreenshot("wikipedia_page.png");
+  await wikipediaPage.takeScreenshot("test/e2e/tests/wikipedia_page.png");
 
   const yearText = await wikipediaPage.getFirstAutomaticProcessYear();
   const formattedYear = formatYear(yearText);
