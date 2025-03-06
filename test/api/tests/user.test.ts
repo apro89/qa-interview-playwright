@@ -2,11 +2,14 @@ import { test, expect } from "@playwright/test";
 import { User } from "../types/user";
 import { UserClient } from "../features/user";
 import { BASE_URL } from "../utils";
+const generateNumericId = (): number => Date.now();
 
 test("Create user test", async () => {
   const userClient = new UserClient(BASE_URL);
+  const uniqueUserId = generateNumericId();
+
   const user: User = {
-    id: 1,
+    id: uniqueUserId,
     username: "testuser",
     firstName: "John",
     lastName: "Doe",
