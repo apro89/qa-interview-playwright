@@ -5,7 +5,7 @@ import { formatYear } from "../helpers/utils";
 
 test.use({ storageState: "auth.json" });
 
-test.only("Search 'automation' on Google, verify Wikipedia article and year", async ({
+test("Search 'automation' on Google, verify Wikipedia article and year", async ({
   page,
 }) => {
   const googlePage = new GooglePage(page);
